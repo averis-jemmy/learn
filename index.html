@@ -1,0 +1,102 @@
+<!doctype html>
+<head>
+   <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+   <title>Bootstrap Test</title>
+</head>
+   <script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+   <script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+   <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="screen" title="no title" charset="utf-8">
+   <link rel="stylesheet" href="css/bootstrap-theme.min.css" type="text/css" media="screen" title="no title" charset="utf-8">
+
+</style>
+
+<script type="text/javascript" charset="utf-8">
+	
+	var text = '{ "weekData": [' +
+		'{ "weekDate" : "4 July 2016", "weekEvent": [{ "bookedTime" : "7.00AM", "name" : "Devin", "status" : "RESERVED" }, { "bookedTime" : "7.30AM", "name" : "", "status" : "" }, { "bookedTime" : "8.00AM", "name" : "", "status" : "" }, { "bookedTime" : "8.30AM", "name" : "James", "status" : "PROCESS" }, { "bookedTime" : "9.00AM", "name" : "", "status" : "" }, { "bookedTime" : "9.30AM", "name" : "", "status" : "" }] },' +
+		'{ "weekDate" : "5 July 2016", "weekEvent": [{ "bookedTime" : "7.00AM", "name" : "Devin", "status" : "PROCESS" }, { "bookedTime" : "7.30AM", "name" : "", "status" : "" }, { "bookedTime" : "8.00AM", "name" : "", "status" : "" }, { "bookedTime" : "8.30AM", "name" : "", "status" : "" }, { "bookedTime" : "9.00AM", "name" : "", "status" : "" }, { "bookedTime" : "9.30AM", "name" : "", "status" : "" }] },' +
+		'{ "weekDate" : "6 July 2016", "weekEvent": [{ "bookedTime" : "7.00AM", "name" : "Devin", "status" : "RESERVED" }, { "bookedTime" : "7.30AM", "name" : "", "status" : "" }, { "bookedTime" : "8.00AM", "name" : "", "status" : "" }, { "bookedTime" : "8.30AM", "name" : "", "status" : "" }, { "bookedTime" : "9.00AM", "name" : "", "status" : "" }, { "bookedTime" : "9.30AM", "name" : "", "status" : "" }] },' +
+		'{ "weekDate" : "7 July 2016", "weekEvent": [{ "bookedTime" : "7.00AM", "name" : "", "status" : "" }, { "bookedTime" : "7.30AM", "name" : "", "status" : "" }, { "bookedTime" : "8.00AM", "name" : "", "status" : "" }, { "bookedTime" : "8.30AM", "name" : "", "status" : "" }, { "bookedTime" : "9.00AM", "name" : "", "status" : "" }, { "bookedTime" : "9.30AM", "name" : "", "status" : "" }] },' +
+		'{ "weekDate" : "8 July 2016", "weekEvent": [{ "bookedTime" : "7.00AM", "name" : "", "status" : "" }, { "bookedTime" : "7.30AM", "name" : "", "status" : "" }, { "bookedTime" : "8.00AM", "name" : "", "status" : "" }, { "bookedTime" : "8.30AM", "name" : "", "status" : "" }, { "bookedTime" : "9.00AM", "name" : "", "status" : "" }, { "bookedTime" : "9.30AM", "name" : "", "status" : "" }] },' +
+		'{ "weekDate" : "9 July 2016", "weekEvent": [{ "bookedTime" : "7.00AM", "name" : "", "status" : "" }, { "bookedTime" : "7.30AM", "name" : "", "status" : "" }, { "bookedTime" : "8.00AM", "name" : "", "status" : "" }, { "bookedTime" : "8.30AM", "name" : "", "status" : "" }, { "bookedTime" : "9.00AM", "name" : "", "status" : "" }, { "bookedTime" : "9.30AM", "name" : "", "status" : "" }] },' +
+		'{ "weekDate" : "10 July 2016", "weekEvent": [{ "bookedTime" : "7.00AM", "name" : "", "status" : "" }, { "bookedTime" : "7.30AM", "name" : "", "status" : "" }, { "bookedTime" : "8.00AM", "name" : "", "status" : "" }, { "bookedTime" : "8.30AM", "name" : "", "status" : "" }, { "bookedTime" : "9.00AM", "name" : "", "status" : "" }, { "bookedTime" : "9.30AM", "name" : "", "status" : "" }] }] }';
+	
+	$(document).ready(function() {
+		var content = "<table class='table table-bordered table-striped' style='height:100%;'>";
+		
+		var obj = JSON.parse(text);
+		var process = 0;
+		var reserved = 0;
+		var free = 0;
+		
+		//alert(obj.weekData[0].weekEvent.length);
+		
+		content += "<thead><tr><th style='text-align:center'></th><th style='text-align:center'>07.00AM</th><th style='text-align:center'>07.30AM</th>";
+		content += "<th style='text-align:center'>08.00AM</th><th style='text-align:center'>08.30AM</th><th style='text-align:center'>09.00AM</th>";
+		content += "<th style='text-align:center'>09.30AM</th></tr></thead><tbody>";
+		
+		for(i = 0; i < obj.weekData.length; i++) {
+			content += "<tr><th scope='row'>(" + obj.weekData[i].weekDate + ")</th>";
+			for(j = 0; j < obj.weekData[i].weekEvent.length; j++) {
+				if(obj.weekData[i].weekEvent[j].name != "") {
+					if(obj.weekData[i].weekEvent[j].status == "RESERVED") {
+						content += "<td style='height:100%; width:100%; display:block; background-color:#f00; border-radius: 0px 0px 1em 0px; padding:0;'>";
+						content += "<div data-trigger='focus' tabindex='0' style='padding:5px; width:100%;height:100%;background-color:#f00;-webkit-border-radius: 0px 0px 0.6em 0px;border-radius: 0px 0px 0.6em 0px;' role='button' id='reserved" + reserved + "'>Content</div>";
+						content += "</td>";
+						reserved++;
+					}
+					if(obj.weekData[i].weekEvent[j].status == "PROCESS") {
+						content += "<td style='height:100%; width:100%; display:block; background-color:#ff0; border-radius: 0px 0px 1em 0px; padding:0;'>";
+						content += "<div data-trigger='focus' tabindex='0' style='padding:5px; width:100%;height:100%;background-color:#ff0;-webkit-border-radius: 0px 0px 0.6em 0px;border-radius: 0px 0px 0.6em 0px;' role='button' id='process" + process + "'>Content</div>";
+						content += "</td>";
+						process++;
+					}
+				}
+				else {
+					content += "<td style='padding:0;'>";
+					content += "<div style='padding:5px; width:100%;height:100%;' role='button' id='free" + free + "' data-trigger='focus' tabindex='0' >Content</div>";
+					content += "</td>";
+					free++;
+				}
+			}
+			content += "</tr>";
+		}
+		
+		content += "</tbody></table>"
+		$("#test").append(content);
+		
+		for(c = 0; c < reserved; c++) {
+			$("#reserved" + c).popover({
+				placement: 'bottom',
+				html: 'true',
+				title : '<span class="text-info"><strong>title</strong></span>',
+				content : '<button type="button" id="close" class="close" onclick="$(&quot;#example&quot;).click();">Close Me</button>'
+			});
+		}
+		
+		for(c = 0; c < process; c++) {
+			$("#process" + c).popover({
+				placement: 'bottom',
+				html: 'true',
+				title : '<span class="text-info"><strong>title</strong></span>',
+				content : '<button type="button" id="close" class="close" onclick="$(&quot;#example&quot;).click();">Close Me</button>'
+			});
+		}
+		
+		for(c = 0; c < free; c++) {
+			$("#free" + c).popover({
+				placement: 'bottom',
+				html: 'true',
+				title : '<span class="text-info"><strong>title</strong></span>',
+				content : '<button type="button" id="close" class="close" onclick="$(&quot;#example&quot;).click();">Close Me</button>'
+			});
+		}
+	});
+
+</script>
+<body style="padding:20px;">
+	<div class="container-fluid">
+		<div class="table-responsive" id="test">
+		</div>
+	</div>
+</body>
