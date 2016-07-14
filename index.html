@@ -7,6 +7,7 @@
    <script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="screen" title="no title" charset="utf-8">
    <link rel="stylesheet" href="css/bootstrap-theme.min.css" type="text/css" media="screen" title="no title" charset="utf-8">
+   <link rel="stylesheet" href="css/extra.css" type="text/css" media="screen" title="no title" charset="utf-8">
 
 </style>
 
@@ -19,12 +20,15 @@
 		'{ "weekDate" : "7 July 2016", "weekEvent": [{ "bookedTime" : "7.00AM", "name" : "", "status" : "" }, { "bookedTime" : "7.30AM", "name" : "", "status" : "" }, { "bookedTime" : "8.00AM", "name" : "", "status" : "" }, { "bookedTime" : "8.30AM", "name" : "", "status" : "" }, { "bookedTime" : "9.00AM", "name" : "", "status" : "" }, { "bookedTime" : "9.30AM", "name" : "", "status" : "" }] },' +
 		'{ "weekDate" : "8 July 2016", "weekEvent": [{ "bookedTime" : "7.00AM", "name" : "", "status" : "" }, { "bookedTime" : "7.30AM", "name" : "", "status" : "" }, { "bookedTime" : "8.00AM", "name" : "", "status" : "" }, { "bookedTime" : "8.30AM", "name" : "", "status" : "" }, { "bookedTime" : "9.00AM", "name" : "", "status" : "" }, { "bookedTime" : "9.30AM", "name" : "", "status" : "" }] },' +
 		'{ "weekDate" : "9 July 2016", "weekEvent": [{ "bookedTime" : "7.00AM", "name" : "", "status" : "" }, { "bookedTime" : "7.30AM", "name" : "", "status" : "" }, { "bookedTime" : "8.00AM", "name" : "", "status" : "" }, { "bookedTime" : "8.30AM", "name" : "", "status" : "" }, { "bookedTime" : "9.00AM", "name" : "", "status" : "" }, { "bookedTime" : "9.30AM", "name" : "", "status" : "" }] },' +
-		'{ "weekDate" : "10 July 2016", "weekEvent": [{ "bookedTime" : "7.00AM", "name" : "", "status" : "" }, { "bookedTime" : "7.30AM", "name" : "", "status" : "" }, { "bookedTime" : "8.00AM", "name" : "", "status" : "" }, { "bookedTime" : "8.30AM", "name" : "", "status" : "" }, { "bookedTime" : "9.00AM", "name" : "", "status" : "" }, { "bookedTime" : "9.30AM", "name" : "", "status" : "" }] }] }';
+		'{ "weekDate" : "10 July 2016", "weekEvent": [{ "bookedTime" : "7.00AM", "name" : "Devin", "status" : "RESERVED" }, { "bookedTime" : "7.30AM", "name" : "James", "status" : "RESERVED" }, { "bookedTime" : "8.00AM", "name" : "James", "status" : "RESERVED" }, { "bookedTime" : "8.30AM", "name" : "James", "status" : "RESERVED" }, { "bookedTime" : "9.00AM", "name" : "James", "status" : "RESERVED" }, { "bookedTime" : "9.30AM", "name" : "James", "status" : "RESERVED" }] }] }';
+	
+	var newData = '{"club":{"id":1,"name":"Kelab Darul Ehsan"},"flights":[{"minPax":2,"maxPax":4,"minCart":0,"maxCart":2,"minCaddy":0,"maxCaddy":2,"tee_time":"07:00","booked":null,"matrix_id":1,"reserve_status":null,"prices":{"flight":"90.0","cart":"100.0","caddy":"90.0","insurance":"90.0","note":"","insurance_mode":1}},{"minPax":2,"maxPax":4,"minCart":0,"maxCart":2,"minCaddy":0,"maxCaddy":2,"tee_time":"07:15","booked":null,"matrix_id":2,"reserve_status":null,"prices":{"flight":"90.0","cart":"100.0","caddy":"90.0","insurance":"90.0","note":"","insurance_mode":1}},{"minPax":2,"maxPax":4,"minCart":0,"maxCart":2,"minCaddy":0,"maxCaddy":2,"tee_time":"07:30","booked":null,"matrix_id":3,"reserve_status":null,"prices":{"flight":"90.0","cart":"100.0","caddy":"90.0","insurance":"90.0","note":"","insurance_mode":1}},{"minPax":2,"maxPax":4,"minCart":0,"maxCart":2,"minCaddy":0,"maxCaddy":2,"tee_time":"07:45","booked":null,"matrix_id":4,"reserve_status":null,"prices":{"flight":"90.0","cart":"100.0","caddy":"90.0","insurance":"90.0","note":"","insurance_mode":1}},{"minPax":2,"maxPax":4,"minCart":0,"maxCart":2,"minCaddy":0,"maxCaddy":2,"tee_time":"08:00","booked":null,"matrix_id":5,"reserve_status":null,"prices":{"flight":"90.0","cart":"100.0","caddy":"90.0","insurance":"90.0","note":"","insurance_mode":1}},{"minPax":2,"maxPax":4,"minCart":0,"maxCart":2,"minCaddy":0,"maxCaddy":2,"tee_time":"08:30","booked":null,"matrix_id":6,"reserve_status":null,"prices":{"flight":"90.0","cart":"100.0","caddy":"90.0","insurance":"90.0","note":"","insurance_mode":1}},{"minPax":2,"maxPax":4,"minCart":0,"maxCart":2,"minCaddy":0,"maxCaddy":2,"tee_time":"09:00","booked":null,"matrix_id":7,"reserve_status":null,"prices":{"flight":"90.0","cart":"100.0","caddy":"90.0","insurance":"90.0","note":"","insurance_mode":1}},{"minPax":3,"maxPax":4,"minCart":1,"maxCart":2,"minCaddy":1,"maxCaddy":2,"tee_time":"16:00","booked":null,"matrix_id":14,"reserve_status":null,"prices":{"flight":"180.0","cart":"100.0","caddy":"200.0","insurance":"50.0","note":"Free:-\r\n* drinks","insurance_mode":1}},{"minPax":3,"maxPax":4,"minCart":1,"maxCart":2,"minCaddy":1,"maxCaddy":2,"tee_time":"16:30","booked":null,"matrix_id":15,"reserve_status":null,"prices":{"flight":"180.0","cart":"100.0","caddy":"200.0","insurance":"50.0","note":"Free:-\r\n* drinks","insurance_mode":1}},{"minPax":3,"maxPax":4,"minCart":1,"maxCart":2,"minCaddy":1,"maxCaddy":2,"tee_time":"17:00","booked":null,"matrix_id":16,"reserve_status":null,"prices":{"flight":"180.0","cart":"100.0","caddy":"200.0","insurance":"50.0","note":"Free:-\r\n* drinks","insurance_mode":1}},{"minPax":3,"maxPax":4,"minCart":1,"maxCart":2,"minCaddy":1,"maxCaddy":2,"tee_time":"17:30","booked":null,"matrix_id":17,"reserve_status":null,"prices":{"flight":"180.0","cart":"100.0","caddy":"200.0","insurance":"50.0","note":"Free:-\r\n* drinks","insurance_mode":1}},{"minPax":3,"maxPax":4,"minCart":1,"maxCart":2,"minCaddy":1,"maxCaddy":2,"tee_time":"18:00","booked":null,"matrix_id":18,"reserve_status":null,"prices":{"flight":"180.0","cart":"100.0","caddy":"200.0","insurance":"50.0","note":"Free:-\r\n* drinks","insurance_mode":1}},{"minPax":3,"maxPax":4,"minCart":1,"maxCart":2,"minCaddy":1,"maxCaddy":2,"tee_time":"18:30","booked":null,"matrix_id":19,"reserve_status":null,"prices":{"flight":"180.0","cart":"100.0","caddy":"200.0","insurance":"50.0","note":"Free:-\r\n* drinks","insurance_mode":1}},{"minPax":3,"maxPax":4,"minCart":1,"maxCart":2,"minCaddy":1,"maxCaddy":2,"tee_time":"19:00","booked":null,"matrix_id":20,"reserve_status":null,"prices":{"flight":"180.0","cart":"100.0","caddy":"200.0","insurance":"50.0","note":"Free:-\r\n* drinks","insurance_mode":1}}],"queryData":{"date":"14/07/2016","query":""}}';
 	
 	$(document).ready(function() {
 		var content = "<table class='table table-bordered table-striped' style='height:100%;'>";
 		
 		var obj = JSON.parse(text);
+		//var newObj = JSON.parse(newData);
 		var process = 0;
 		var reserved = 0;
 		var free = 0;
@@ -40,21 +44,21 @@
 			for(j = 0; j < obj.weekData[i].weekEvent.length; j++) {
 				if(obj.weekData[i].weekEvent[j].name != "") {
 					if(obj.weekData[i].weekEvent[j].status == "RESERVED") {
-						content += "<td style='height:100%; width:100%; display:block; background-color:#f00; border-radius: 0px 0px 1em 0px; padding:0;'>";
-						content += "<div data-trigger='focus' tabindex='0' style='padding:5px; width:100%;height:100%;background-color:#f00;-webkit-border-radius: 0px 0px 0.6em 0px;border-radius: 0px 0px 0.6em 0px;' role='button' id='reserved" + reserved + "'>Content</div>";
+						content += "<td style='background-color:#f00; padding:0px;' >";
+						content += "<a data-trigger='focus' tabindex='0' role='button' id='reserved" + reserved + "'><div style='padding:5px;'>Content</div></a>";
 						content += "</td>";
 						reserved++;
 					}
 					if(obj.weekData[i].weekEvent[j].status == "PROCESS") {
-						content += "<td style='height:100%; width:100%; display:block; background-color:#ff0; border-radius: 0px 0px 1em 0px; padding:0;'>";
-						content += "<div data-trigger='focus' tabindex='0' style='padding:5px; width:100%;height:100%;background-color:#ff0;-webkit-border-radius: 0px 0px 0.6em 0px;border-radius: 0px 0px 0.6em 0px;' role='button' id='process" + process + "'>Content</div>";
+						content += "<td style='background-color:#ff0; padding:0px;' >";
+						content += "<a data-trigger='focus' tabindex='0' role='button' id='process" + process + "'><div style='padding:5px;'>Content</div></a>";
 						content += "</td>";
 						process++;
 					}
 				}
 				else {
-					content += "<td style='padding:0;'>";
-					content += "<div style='padding:5px; width:100%;height:100%;' role='button' id='free" + free + "' data-trigger='focus' tabindex='0' >Content</div>";
+					content += "<td style='padding:0px;'>";
+					content += "<a data-trigger='focus' tabindex='0' role='button' id='free" + free + "'><div style='padding:5px;'>Content<br></div></a>";
 					content += "</td>";
 					free++;
 				}
