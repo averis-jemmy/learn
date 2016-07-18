@@ -14,7 +14,7 @@
 <script type="text/javascript" charset="utf-8">
 	
 	var newData = '{"club":{"id":1,"name":"Kelab Darul Ehsan"},"flights":[' + 
-	'{"minPax":2,"maxPax":4,"minCart":0,"maxCart":2,"minCaddy":0,"maxCaddy":2,"tee_time":"07:00","booked":null,"matrix_id":1,"reserve_status":null,"prices":{"flight":"90.0","cart":"100.0","caddy":"90.0","insurance":"90.0","note":"","insurance_mode":1}},' +
+	'{"minPax":2,"maxPax":4,"minCart":0,"maxCart":2,"minCaddy":0,"maxCaddy":2,"tee_time":"07:00","booked":1,"matrix_id":1,"reserve_status":null,"prices":{"flight":"90.0","cart":"100.0","caddy":"90.0","insurance":"90.0","note":"","insurance_mode":1}},' +
 	'{"minPax":2,"maxPax":4,"minCart":0,"maxCart":2,"minCaddy":0,"maxCaddy":2,"tee_time":"07:15","booked":null,"matrix_id":2,"reserve_status":null,"prices":{"flight":"90.0","cart":"100.0","caddy":"90.0","insurance":"90.0","note":"","insurance_mode":1}},' +
 	'{"minPax":2,"maxPax":4,"minCart":0,"maxCart":2,"minCaddy":0,"maxCaddy":2,"tee_time":"07:30","booked":null,"matrix_id":3,"reserve_status":null,"prices":{"flight":"90.0","cart":"100.0","caddy":"90.0","insurance":"90.0","note":"","insurance_mode":1}},' +
 	'{"minPax":2,"maxPax":4,"minCart":0,"maxCart":2,"minCaddy":0,"maxCaddy":2,"tee_time":"07:45","booked":null,"matrix_id":4,"reserve_status":null,"prices":{"flight":"90.0","cart":"100.0","caddy":"90.0","insurance":"90.0","note":"","insurance_mode":1}},' +
@@ -31,7 +31,7 @@
 	'"queryData":{"date":"14/07/2016","query":""}}';
 	
 	$(document).ready(function() {
-		var content = "<table class='table table-bordered table-striped' style='height:100%;'>";
+		var divContent = "<table class='table table-bordered table-striped' style='height:100%;'>";
 		
 		newData = newData.replace(/(?:\r\n|\r|\n)/g, '');
 		var newObj = JSON.parse(newData);
@@ -39,36 +39,88 @@
 		var reserved = 0;
 		var free = 0;
 		
+		divContent += "<thead><tr><th style='text-align:center'></th>";
 		
-		
-		content += "</table>"
-		//$("#test").append(content);
-		
-		for(c = 0; c < reserved; c++) {
-			$("#reserved" + c).popover({
-				placement: 'bottom',
-				html: 'true',
-				title : '<span class="text-info"><strong>title</strong></span>',
-				content : '<button type="button" id="close" class="close" onclick="$(&quot;#example&quot;).click();">Close Me</button>'
-			});
+		for(i = 0; i < newObj.flights.length; i++) {
+			divContent += "<th style='text-align:center'>" + newObj.flights[i].tee_time + "</th>";
 		}
 		
-		for(c = 0; c < process; c++) {
-			$("#process" + c).popover({
-				placement: 'bottom',
-				html: 'true',
-				title : '<span class="text-info"><strong>title</strong></span>',
-				content : '<button type="button" id="close" class="close" onclick="$(&quot;#example&quot;).click();">Close Me</button>'
-			});
+		divContent += "</tr></thead><tbody><tr>";
+		divContent += "<th scope='row'>(" + newObj.queryData.date + ")</th>";
+		
+		for(i = 0; i < newObj.flights.length; i++) {
+			if(newObj.flights[i].booked != null) {
+				divContent += "<td style='background-color:#f00; padding:0px;' >";
+				divContent += "<a data-trigger='focus' tabindex='0' role='button' id='reserved" + reserved + "'><div style='padding:5px;'>Reserved</div></a>";
+				divContent += "</td>";
+				
+				reserved++;
+			}
+			else if(newObj.flights[i].reserve_status != null) {
+				divContent += "<td style='background-color:#ff0; padding:0px;' >";
+				divContent += "<a data-trigger='focus' tabindex='0' role='button' id='process" + process + "'><div style='padding:5px;'>Temporarily Occupied</div></a>";
+				divContent += "</td>";
+				process++;
+			}
+			else {
+				divContent += "<td style='padding:0px;'>";
+				divContent += "<a data-trigger='focus' tabindex='0' role='button' id='free" + free + "'><div style='padding:5px;'>Available<br></div></a>";
+				divContent += "</td>";
+				free++;
+			}
 		}
 		
-		for(c = 0; c < free; c++) {
-			$("#free" + c).popover({
-				placement: 'bottom',
-				html: 'true',
-				title : '<span class="text-info"><strong>title</strong></span>',
-				content : '<button type="button" id="close" class="close" onclick="$(&quot;#example&quot;).click();">Close Me</button>'
-			});
+		divContent += "</tr></tbody></table>"
+		
+		$("#test").append(divContent);
+		
+		reserved = 0;
+		process = 0;
+		free = 0;
+		
+		for(i = 0; i < newObj.flights.length; i++) {
+			if(newObj.flights[i].booked != null) {				
+				var popOverContent = '<table><tr><td align="center">Reserved</td></tr></table>';
+								
+				$("#reserved" + reserved).popover({
+					placement: 'bottom',
+					html: 'true',
+					title : '<span class="text-info"><strong>' + newObj.club.name + '</strong></span>',
+					content : popOverContent
+				});
+				
+				reserved++;
+			}
+			else if(newObj.flights[i].reserve_status != null) {
+				$("#process" + process).popover({
+					placement: 'bottom',
+					html: 'true',
+					title : '<span class="text-info"><strong>' + newObj.club.name + '</strong></span>',
+					content : '<button type="button" id="close" class="close" onclick="$(&quot;#example&quot;).click();">Close Me</button>'
+				});
+				
+				process++;
+			}
+			else {
+				var popOverContent = '<table><tr><td align="center">Welcome!!!</td></tr><tr><td align="center">';
+				popOverContent += '<table style="width:250px;"><tr><td colspan = 3 style="padding-bottom:20px;"><b>Price Details</b></td></tr>';
+				popOverContent += '<tr><td style="padding-right:10px;">Flight</td><td>:</td><td> RM ' + newObj.flights[i].prices.flight + ' Per Pax (Min 2 Pax; Max 4 Pax)</td></tr>';
+				popOverContent += '<tr><td style="padding-right:10px;">Cart</td><td>:</td><td> RM ' + newObj.flights[i].prices.cart + ' Per Cart (Max 2 Cart)</td></tr>';
+				popOverContent += '<tr><td style="padding-right:10px;">Caddy</td><td>:</td><td> RM ' + newObj.flights[i].prices.caddy + ' Per Caddy (Max 2 Caddy)</td></tr>';
+				popOverContent += '<tr><td style="padding-right:10px;">Insurance</td><td>:</td><td> RM ' + newObj.flights[i].prices.insurance + '</td></tr>';
+				if(newObj.flights[i].prices.note != "")
+					popOverContent += '<tr><td style="padding-right:10px;">Notes</td><td>:</td><td> ' + newObj.flights[i].prices.note + '</td></tr>';
+				popOverContent += '</table></td></tr></table>';
+				
+				$("#free" + free).popover({
+					placement: 'bottom',
+					html: 'true',
+					title : '<span class="text-info"><strong>' + newObj.club.name + '</strong></span>',
+					content : popOverContent
+				});
+				
+				free++;
+			}
 		}
 	});
 
