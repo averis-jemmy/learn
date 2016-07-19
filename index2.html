@@ -33,6 +33,10 @@
 	$(document).ready(function() {
 		var divContent = "<table class='table table-bordered table-striped' style='height:100%;'>";
 		
+		// $.getJSON('http://novgolf-dev.ap-southeast-1.elasticbeanstalk.com/golf_clubs/1.json', function(data) {
+			// newData = data;
+		// });
+		
 		newData = newData.replace(/(?:\r\n|\r|\n)/g, '');
 		var newObj = JSON.parse(newData);
 		var process = 0;
@@ -51,20 +55,20 @@
 		for(i = 0; i < newObj.flights.length; i++) {
 			if(newObj.flights[i].booked != null) {
 				divContent += "<td style='background-color:#f00; padding:0px;' >";
-				divContent += "<a data-trigger='focus' tabindex='0' role='button' id='reserved" + reserved + "'><div style='padding:5px;'>Reserved</div></a>";
+				divContent += "<a data-trigger='focus' tabindex='0' role='button' id='reserved" + reserved + "'></a>";
 				divContent += "</td>";
 				
 				reserved++;
 			}
 			else if(newObj.flights[i].reserve_status != null) {
 				divContent += "<td style='background-color:#ff0; padding:0px;' >";
-				divContent += "<a data-trigger='focus' tabindex='0' role='button' id='process" + process + "'><div style='padding:5px;'>Temporarily Occupied</div></a>";
+				divContent += "<a data-trigger='focus' tabindex='0' role='button' id='process" + process + "'></a>";
 				divContent += "</td>";
 				process++;
 			}
 			else {
 				divContent += "<td style='padding:0px;'>";
-				divContent += "<a data-trigger='focus' tabindex='0' role='button' id='free" + free + "'><div style='padding:5px;'>Available<br></div></a>";
+				divContent += "<a data-trigger='focus' tabindex=0 role='button' id='free" + free + "'></a>";
 				divContent += "</td>";
 				free++;
 			}
@@ -128,6 +132,15 @@
 <body style="padding:20px;">
 	<div class="container-fluid">
 		<div class="table-responsive" id="test">
+		</div>
+	</div>
+	<div class="popover menu popover--bottom">
+		<a href="#" class="popover_trigger">
+		</a>
+		<div class="popover__content">
+			<a href="#">Profile</a>
+			<a href="#">Settings</a>
+			<a href="#">Log Out</a>
 		</div>
 	</div>
 </body>
