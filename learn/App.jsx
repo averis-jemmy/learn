@@ -3,19 +3,36 @@ import Table from 'react-bootstrap/lib/Table';
 import OverlayTrigger from 'react-bootstrap/lib/OverlayTrigger';
 import Popover from 'react-bootstrap/lib/Popover';
 import Button from 'react-bootstrap/lib/Button';
+import DayPicker, { DateUtils } from "react-day-picker";
 
 class App extends React.Component {
 	constructor() {
 	  super();
+	  var _this = this;
 	  
 	  this.state = {
-         data: {"club":{"id":1,"name":"Kelab Darul Ehsan"},"flights":[{"minPax":2,"maxPax":4,"minCart":0,"maxCart":2,"minCaddy":0,"maxCaddy":2,"tee_time":"07:00","booked":1,"matrix_id":1,"reserve_status":null,"prices":{"flight":"90.0","cart":"100.0","caddy":"90.0","insurance":"90.0","note":"","insurance_mode":1}},{"minPax":2,"maxPax":4,"minCart":0,"maxCart":2,"minCaddy":0,"maxCaddy":2,"tee_time":"07:15","booked":null,"matrix_id":2,"reserve_status":1,"prices":{"flight":"90.0","cart":"100.0","caddy":"90.0","insurance":"90.0","note":"","insurance_mode":1}},{"minPax":2,"maxPax":4,"minCart":0,"maxCart":2,"minCaddy":0,"maxCaddy":2,"tee_time":"07:30","booked":null,"matrix_id":3,"reserve_status":null,"prices":{"flight":"90.0","cart":"100.0","caddy":"90.0","insurance":"90.0","note":"","insurance_mode":1}},{"minPax":2,"maxPax":4,"minCart":0,"maxCart":2,"minCaddy":0,"maxCaddy":2,"tee_time":"07:45","booked":null,"matrix_id":4,"reserve_status":null,"prices":{"flight":"90.0","cart":"100.0","caddy":"90.0","insurance":"90.0","note":"","insurance_mode":1}},{"minPax":2,"maxPax":4,"minCart":0,"maxCart":2,"minCaddy":0,"maxCaddy":2,"tee_time":"08:00","booked":null,"matrix_id":5,"reserve_status":null,"prices":{"flight":"90.0","cart":"100.0","caddy":"90.0","insurance":"90.0","note":"","insurance_mode":1}},{"minPax":2,"maxPax":4,"minCart":0,"maxCart":2,"minCaddy":0,"maxCaddy":2,"tee_time":"08:30","booked":null,"matrix_id":6,"reserve_status":null,"prices":{"flight":"90.0","cart":"100.0","caddy":"90.0","insurance":"90.0","note":"","insurance_mode":1}},{"minPax":2,"maxPax":4,"minCart":0,"maxCart":2,"minCaddy":0,"maxCaddy":2,"tee_time":"09:00","booked":null,"matrix_id":7,"reserve_status":null,"prices":{"flight":"90.0","cart":"100.0","caddy":"90.0","insurance":"90.0","note":"","insurance_mode":1}},{"minPax":3,"maxPax":4,"minCart":1,"maxCart":2,"minCaddy":1,"maxCaddy":2,"tee_time":"16:00","booked":null,"matrix_id":14,"reserve_status":null,"prices":{"flight":"180.0","cart":"100.0","caddy":"200.0","insurance":"50.0","note":"Free:-\r\n* drinks","insurance_mode":1}},{"minPax":3,"maxPax":4,"minCart":1,"maxCart":2,"minCaddy":1,"maxCaddy":2,"tee_time":"16:30","booked":null,"matrix_id":15,"reserve_status":null,"prices":{"flight":"180.0","cart":"100.0","caddy":"200.0","insurance":"50.0","note":"Free:-\r\n* drinks","insurance_mode":1}},{"minPax":3,"maxPax":4,"minCart":1,"maxCart":2,"minCaddy":1,"maxCaddy":2,"tee_time":"17:00","booked":null,"matrix_id":16,"reserve_status":null,"prices":{"flight":"180.0","cart":"100.0","caddy":"200.0","insurance":"50.0","note":"Free:-\r\n* drinks","insurance_mode":1}},{"minPax":3,"maxPax":4,"minCart":1,"maxCart":2,"minCaddy":1,"maxCaddy":2,"tee_time":"17:30","booked":null,"matrix_id":17,"reserve_status":null,"prices":{"flight":"180.0","cart":"100.0","caddy":"200.0","insurance":"50.0","note":"Free:-\r\n* drinks","insurance_mode":1}},{"minPax":3,"maxPax":4,"minCart":1,"maxCart":2,"minCaddy":1,"maxCaddy":2,"tee_time":"18:00","booked":null,"matrix_id":18,"reserve_status":null,"prices":{"flight":"180.0","cart":"100.0","caddy":"200.0","insurance":"50.0","note":"Free:-\r\n* drinks","insurance_mode":1}},{"minPax":3,"maxPax":4,"minCart":1,"maxCart":2,"minCaddy":1,"maxCaddy":2,"tee_time":"18:30","booked":null,"matrix_id":19,"reserve_status":null,"prices":{"flight":"180.0","cart":"100.0","caddy":"200.0","insurance":"50.0","note":"Free:-\r\n* drinks","insurance_mode":1}},{"minPax":3,"maxPax":4,"minCart":1,"maxCart":2,"minCaddy":1,"maxCaddy":2,"tee_time":"19:00","booked":null,"matrix_id":20,"reserve_status":null,"prices":{"flight":"180.0","cart":"100.0","caddy":"200.0","insurance":"50.0","note":"Free:-\r\n* drinks","insurance_mode":1}}],"queryData":{"date":"19/07/2016","query":""}}
+		 selectedDays: [ new Date(), new Date() ],
+		 selectedDay: new Date(),
+         data: {"club":{"id":1,"name":"Kelab Darul Ehsan"},"flights":[{"minPax":2,"maxPax":4,"minCart":0,"maxCart":2,"minCaddy":0,"maxCaddy":2,"tee_time":"07:00","booked":1,"matrix_id":1,"reserve_status":1,"prices":{"flight":"90.0","cart":"100.0","caddy":"90.0","insurance":"90.0","note":"","insurance_mode":1}},{"minPax":2,"maxPax":4,"minCart":0,"maxCart":2,"minCaddy":0,"maxCaddy":2,"tee_time":"07:15","booked":null,"matrix_id":2,"reserve_status":1,"prices":{"flight":"90.0","cart":"100.0","caddy":"90.0","insurance":"90.0","note":"","insurance_mode":1}},{"minPax":2,"maxPax":4,"minCart":0,"maxCart":2,"minCaddy":0,"maxCaddy":2,"tee_time":"07:30","booked":null,"matrix_id":3,"reserve_status":2,"prices":{"flight":"90.0","cart":"100.0","caddy":"90.0","insurance":"90.0","note":"","insurance_mode":1}},{"minPax":2,"maxPax":4,"minCart":0,"maxCart":2,"minCaddy":0,"maxCaddy":2,"tee_time":"07:45","booked":null,"matrix_id":4,"reserve_status":null,"prices":{"flight":"90.0","cart":"100.0","caddy":"90.0","insurance":"90.0","note":"","insurance_mode":1}},{"minPax":2,"maxPax":4,"minCart":0,"maxCart":2,"minCaddy":0,"maxCaddy":2,"tee_time":"08:00","booked":null,"matrix_id":5,"reserve_status":null,"prices":{"flight":"90.0","cart":"100.0","caddy":"90.0","insurance":"90.0","note":"","insurance_mode":1}},{"minPax":2,"maxPax":4,"minCart":0,"maxCart":2,"minCaddy":0,"maxCaddy":2,"tee_time":"08:30","booked":null,"matrix_id":6,"reserve_status":null,"prices":{"flight":"90.0","cart":"100.0","caddy":"90.0","insurance":"90.0","note":"","insurance_mode":1}},{"minPax":2,"maxPax":4,"minCart":0,"maxCart":2,"minCaddy":0,"maxCaddy":2,"tee_time":"09:00","booked":null,"matrix_id":7,"reserve_status":null,"prices":{"flight":"90.0","cart":"100.0","caddy":"90.0","insurance":"90.0","note":"","insurance_mode":1}},{"minPax":3,"maxPax":4,"minCart":1,"maxCart":2,"minCaddy":1,"maxCaddy":2,"tee_time":"16:00","booked":null,"matrix_id":14,"reserve_status":null,"prices":{"flight":"180.0","cart":"100.0","caddy":"200.0","insurance":"50.0","note":"Free:-\r\n* drinks","insurance_mode":1}},{"minPax":3,"maxPax":4,"minCart":1,"maxCart":2,"minCaddy":1,"maxCaddy":2,"tee_time":"16:30","booked":null,"matrix_id":15,"reserve_status":null,"prices":{"flight":"180.0","cart":"100.0","caddy":"200.0","insurance":"50.0","note":"Free:-\r\n* drinks","insurance_mode":1}},{"minPax":3,"maxPax":4,"minCart":1,"maxCart":2,"minCaddy":1,"maxCaddy":2,"tee_time":"17:00","booked":null,"matrix_id":16,"reserve_status":null,"prices":{"flight":"180.0","cart":"100.0","caddy":"200.0","insurance":"50.0","note":"Free:-\r\n* drinks","insurance_mode":1}},{"minPax":3,"maxPax":4,"minCart":1,"maxCart":2,"minCaddy":1,"maxCaddy":2,"tee_time":"17:30","booked":null,"matrix_id":17,"reserve_status":null,"prices":{"flight":"180.0","cart":"100.0","caddy":"200.0","insurance":"50.0","note":"Free:-\r\n* drinks","insurance_mode":1}},{"minPax":3,"maxPax":4,"minCart":1,"maxCart":2,"minCaddy":1,"maxCaddy":2,"tee_time":"18:00","booked":null,"matrix_id":18,"reserve_status":null,"prices":{"flight":"180.0","cart":"100.0","caddy":"200.0","insurance":"50.0","note":"Free:-\r\n* drinks","insurance_mode":1}},{"minPax":3,"maxPax":4,"minCart":1,"maxCart":2,"minCaddy":1,"maxCaddy":2,"tee_time":"18:30","booked":null,"matrix_id":19,"reserve_status":null,"prices":{"flight":"180.0","cart":"100.0","caddy":"200.0","insurance":"50.0","note":"Free:-\r\n* drinks","insurance_mode":1}},{"minPax":3,"maxPax":4,"minCart":1,"maxCart":2,"minCaddy":1,"maxCaddy":2,"tee_time":"19:00","booked":null,"matrix_id":20,"reserve_status":null,"prices":{"flight":"180.0","cart":"100.0","caddy":"200.0","insurance":"50.0","note":"Free:-\r\n* drinks","insurance_mode":1}}],"queryData":{"date":"19/07/2016","query":""}}
       }
+	  
+	  $.getJSON( "data.json", function( data ) {
+		  _this.setState({data: data})
+	  });
+	}
+	
+	handleDayClick(e, day) {
+		this.setState({ selectedDay: day });
+		var date = new Date(day);
 	}
 
 	render() {	  
 	  return (
 		 <div>
+			<DayPicker
+				onDayClick={ this.handleDayClick.bind(this) }
+				selectedDays={ day => DateUtils.isSameDay(day, this.state.selectedDay) }
+			/>
 			<Table striped bordered condensed>
 				<thead>
 					<tr>
@@ -68,13 +85,13 @@ class TableRowColumn extends React.Component {
 		 padding: 0
       }
 	  
-	  if(this.props.data.booked != null) {
+	  if(this.props.data.reserve_status != null && this.props.data.reserve_status == 1) {
 		  myStyle = {
 			 background: '#FF0000',
 			 padding: 0
 		  }
 	  }
-	  else if(this.props.data.reserve_status != null) {
+	  else if(this.props.data.reserve_status != null && this.props.data.reserve_status == 2) {
 		  myStyle = {
 			 background: '#FFFF00',
 			 padding: 0
