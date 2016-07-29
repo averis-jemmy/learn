@@ -10,8 +10,9 @@ class App extends React.Component {
 		super();
 		var _this = this;
 
+		var date = new Date();
 		this.state = {
-			selectedDays: null,
+			selectedDays: [{ "day": "Monday", "date": date.setDate(date.getDate() + (-6)) }, { "day": "Tuesday", "date": date.setDate(date.getDate() + (-5)) }, { "day": "Wednesday", "date": date.setDate(date.getDate() + (-4)) }, { "day": "Thursday", "date": date.setDate(date.getDate() + (-3)) }, { "day": "Friday", "date": date.setDate(date.getDate() + (-2)) }, { "day": "Saturday", "date": date.setDate(date.getDate() + (-1)) }, { "day": "Sunday", "date": date }],
 			selectedDay: new Date(),
 			data: null
 		}
@@ -26,74 +27,74 @@ class App extends React.Component {
 		var date = new Date(day);
 		switch(day.getDay()) {
 			case 0:
-				this.selectedDays: [ { "day": "Monday", "date": date.setDate(date.getDate() + (-6)) },
+				this.setState({selectedDays: [ { "day": "Monday", "date": date.setDate(date.getDate() + (-6)) },
 					{ "day": "Tuesday", "date": date.setDate(date.getDate() + (-5)) },
 					{ "day": "Wednesday", "date": date.setDate(date.getDate() + (-4)) },
 					{ "day": "Thursday", "date": date.setDate(date.getDate() + (-3)) },
 					{ "day": "Friday", "date": date.setDate(date.getDate() + (-2)) },
 					{ "day": "Saturday", "date": date.setDate(date.getDate() + (-1)) },
 					{ "day": "Sunday", "date": date }
-				]
+				]});
 				break;
 			case 1:
-				this.selectedDays: [ { "day": "Monday", "date": date.setDate(date.getDate() + (-5)) },
+				this.setState({selectedDays: [ { "day": "Monday", "date": date.setDate(date.getDate() + (-5)) },
 					{ "day": "Tuesday", "date": date.setDate(date.getDate() + (-4)) },
 					{ "day": "Wednesday", "date": date.setDate(date.getDate() + (-3)) },
 					{ "day": "Thursday", "date": date.setDate(date.getDate() + (-2)) },
 					{ "day": "Friday", "date": date.setDate(date.getDate() + (-1)) },
 					{ "day": "Saturday", "date": date },
 					{ "day": "Sunday", "date": date.setDate(date.getDate() + (1)) }
-				]
+				]});
 				break;
 			case 2:
-				this.selectedDays: [ { "day": "Monday", "date": date.setDate(date.getDate() + (-4)) },
+				this.setState({selectedDays: [ { "day": "Monday", "date": date.setDate(date.getDate() + (-4)) },
 					{ "day": "Tuesday", "date": date.setDate(date.getDate() + (-3)) },
 					{ "day": "Wednesday", "date": date.setDate(date.getDate() + (-2)) },
 					{ "day": "Thursday", "date": date.setDate(date.getDate() + (-1)) },
 					{ "day": "Friday", "date": date },
 					{ "day": "Saturday", "date": date.setDate(date.getDate() + (1)) },
 					{ "day": "Sunday", "date": date.setDate(date.getDate() + (2)) }
-				]
+				]});
 				break;
 			case 3:
-				this.selectedDays: [ { "day": "Monday", "date": date.setDate(date.getDate() + (-3)) },
+				this.setState({selectedDays: [ { "day": "Monday", "date": date.setDate(date.getDate() + (-3)) },
 					{ "day": "Tuesday", "date": date.setDate(date.getDate() + (-2)) },
 					{ "day": "Wednesday", "date": date.setDate(date.getDate() + (-1)) },
 					{ "day": "Thursday", "date": date },
 					{ "day": "Friday", "date": date.setDate(date.getDate() + (1)) },
 					{ "day": "Saturday", "date": date.setDate(date.getDate() + (2)) },
 					{ "day": "Sunday", "date": date.setDate(date.getDate() + (3)) }
-				]
+				]});
 				break;
 			case 4:
-				this.selectedDays: [ { "day": "Monday", "date": date.setDate(date.getDate() + (-2)) },
+				this.setState({selectedDays: [ { "day": "Monday", "date": date.setDate(date.getDate() + (-2)) },
 					{ "day": "Tuesday", "date": date.setDate(date.getDate() + (-1)) },
 					{ "day": "Wednesday", "date": date },
 					{ "day": "Thursday", "date": date.setDate(date.getDate() + (1)) },
 					{ "day": "Friday", "date": date.setDate(date.getDate() + (2)) },
 					{ "day": "Saturday", "date": date.setDate(date.getDate() + (3)) },
 					{ "day": "Sunday", "date": date.setDate(date.getDate() + (4)) }
-				]
+				]});
 				break;
 			case 5:
-				this.selectedDays: [ { "day": "Monday", "date": date.setDate(date.getDate() + (-1)) },
+				this.setState({selectedDays: [ { "day": "Monday", "date": date.setDate(date.getDate() + (-1)) },
 					{ "day": "Tuesday", "date": date },
 					{ "day": "Wednesday", "date": date.setDate(date.getDate() + (1)) },
 					{ "day": "Thursday", "date": date.setDate(date.getDate() + (2)) },
 					{ "day": "Friday", "date": date.setDate(date.getDate() + (3)) },
 					{ "day": "Saturday", "date": date.setDate(date.getDate() + (4)) },
 					{ "day": "Sunday", "date": date.setDate(date.getDate() + (5)) }
-				]
+				]});
 				break;
 			case 6:
-				this.selectedDays: [ { "day": "Monday", "date": date },
+				this.setState({selectedDays: [ { "day": "Monday", "date": date },
 					{ "day": "Tuesday", "date": date.setDate(date.getDate() + (1)) },
 					{ "day": "Wednesday", "date": date.setDate(date.getDate() + (2)) },
 					{ "day": "Thursday", "date": date.setDate(date.getDate() + (3)) },
 					{ "day": "Friday", "date": date.setDate(date.getDate() + (4)) },
 					{ "day": "Saturday", "date": date.setDate(date.getDate() + (5)) },
 					{ "day": "Sunday", "date": date.setDate(date.getDate() + (6)) }
-				]
+				]});
 				break;
 			default:
 				break;
